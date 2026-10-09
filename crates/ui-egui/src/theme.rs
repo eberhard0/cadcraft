@@ -94,6 +94,8 @@ pub fn install_fonts(ctx: &egui::Context) {
             &["/System/Library/Fonts/SFNS.ttf", "/System/Library/Fonts/Helvetica.ttc", "/Library/Fonts/Arial.ttf"]
         } else if cfg!(windows) {
             &["C:\\Windows\\Fonts\\segoeui.ttf", "C:\\Windows\\Fonts\\arial.ttf"]
+        } else if cfg!(target_os = "android") {
+            &["/system/fonts/Roboto-Regular.ttf", "/system/fonts/NotoSans-Regular.ttf"]
         } else {
             &[
                 "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
