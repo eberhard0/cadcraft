@@ -85,6 +85,7 @@ impl Shell {
     fn mirror_saves(&mut self) {
         let mut watched = WATCHED.lock().unwrap_or_else(PoisonError::into_inner);
         for (path, seen) in watched.iter_mut() {
+            let path: &Path = path;
             let Some(modified) = std::fs::metadata(path).ok().and_then(|m| m.modified().ok()) else { continue };
             if *seen == Some(modified) {
                 continue;
